@@ -27,7 +27,7 @@ import water_stn_downloader as wsd
 
 
 
-def test_junk():
+def test_file_exists():
     if not os.path.exists(wsc.in_json_filename):
         url = 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI_FGP_All_Layers/MapServer/6/query?outFields=*&where=OBJECTID%3E0&f=json'
         params = {}
