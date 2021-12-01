@@ -18,7 +18,7 @@ wsc.in_json_filename = r'data\water_stn.json'
 wsc.out_kml_filename = r'data\water_stn.kml'
 wsc.out_csv_filename = r'data\water_stn.csv'
 
-import water_stn_downloader as wsd
+
 
 #don't want to do a test but a check for local data existing
 
