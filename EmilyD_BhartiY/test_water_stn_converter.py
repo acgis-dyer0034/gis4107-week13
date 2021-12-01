@@ -12,10 +12,37 @@
 import csv
 import water_stn_converter as wsc
 import os
+import requests
 
 wsc.in_json_filename = r'data\water_stn.json'
 wsc.out_kml_filename = r'data\water_stn.kml'
 wsc.out_csv_filename = r'data\water_stn.csv'
+
+import water_stn_downloader as wsd
+
+#don't want to do a test but a check for local data existing
+
+#if local_data file exists, use that
+# if not, access api via water_stn_downloader
+
+
+
+def test_junk():
+    if not os.path.exists(wsc.in_json_filename):
+        url = 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI_FGP_All_Layers/MapServer/6/query?outFields=*&where=OBJECTID%3E0&f=json'
+        params = {}
+        out_json_filename = 'local_data'
+        response = requests.get(url, params, stream=True, timeout=30)
+        response.raise_for_status()
+        with open(out_json_filename, 'wb') as out_file:
+            # Iterate through the response in 1 MB chunks
+            #
+            for chunk in response.iter_content(chunk_size=1024*1024):
+                # Write each chunk out to the .json file ...
+                #
+                out_file.write(chunk)
+    
+    
 
 def test_load_json_file_to_dict():
     expected = 'Station_Name'
