@@ -14,7 +14,7 @@ import water_stn_converter as wsc
 import os
 import requests
 
-wsc.in_json_filename = r'data\water_stn.json'
+wsc.in_json_filename =  r'C:\acgis\gis4107_prog\week_13\lab\gis4107-week13\EmilyD_BhartiY\json_file_output.json'
 wsc.out_kml_filename = r'data\water_stn.kml'
 wsc.out_csv_filename = r'data\water_stn.csv'
 
@@ -112,3 +112,9 @@ def test_json_to_kmz():
     assert kmz_size < kml_size
     assert kmz_size > 10000
     # os.startfile(wsc.out_kml_filename.replace('kml', 'kmz'))
+
+def test_get_sampling_frequencies():
+    expected = [("Seasonal", 184), ("Yearly", 682)]
+    actual = wsc.get_sampling_frequencies()
+   
+    assert actual == expected

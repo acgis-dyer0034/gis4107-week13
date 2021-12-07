@@ -33,7 +33,7 @@
 
 import json
 
-in_json_filename = ''
+in_json_filename = r'C:\acgis\gis4107_prog\week_13\lab\gis4107-week13\EmilyD_BhartiY\json_file_output.json'
 out_csv_filename = ''
 out_kml_filename = ''
 
@@ -155,5 +155,27 @@ def get_placemark(name, longitude, latitude, wateroffice_link):
     return kml.encode("utf-8")
 
 def get_sampling_frequencies():
-    sampling_r
-    return [(),(),()]
+    
+    water_stns_dict = load_json_file_to_dict()
+   
+    sampling_freq = ''
+    count_seasonal = 0
+    count_yearly = 0
+
+    sampling_freq = water_stns_dict['features']
+    for elements in sampling_freq:
+        frequency_element = elements['attributes']['Sampling_Frequency']
+ 
+        if frequency_element == "Seasonal":
+            count_seasonal += 1
+           
+        elif frequency_element == "Yearly":
+            count_yearly += 1
+    seasonal_sample_freq = ("Seasonal", count_seasonal)
+    yearly_sample_freq = ("Yearly", count_yearly)
+    return [seasonal_sample_freq, yearly_sample_freq]
+
+#frequency is either yearly or seasonal so were counting how many are seasonal and how many are yearly
+#2 tuples: 1 with [("seasonal", (Count of seasonal samples)], [("Yearly". [Count of yearly samples])]
+
+
