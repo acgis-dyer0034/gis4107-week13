@@ -153,3 +153,7 @@ def get_placemark(name, longitude, latitude, wateroffice_link):
     global pm_fmt
     kml = pm_fmt.format(name, wateroffice_link, longitude, latitude)
     return kml.encode("utf-8")
+
+def get_sampling_frequencies():
+    sampling_r
+    return [(),(),()]
