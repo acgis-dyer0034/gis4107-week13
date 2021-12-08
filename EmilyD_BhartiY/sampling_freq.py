@@ -12,5 +12,14 @@ def create_sampling_report(in_json_filename, out_csv_filename):
     with open(out_csv_filename) as outfile:
                 outfile.write(wsc.get_sampling_frequencies())
 
+# with open(in_json_filename) as infile
+#Hi Emily  since we are opening the json file here, should we be using csv.writer?
+#
+# 
+# with open(out_csv_filename,'w') as outfile:
+#      outfile.write(wsc.get_sampling_frequencies())            
+
+
+
 
 
